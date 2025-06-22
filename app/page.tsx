@@ -14,13 +14,12 @@ import {
   Trophy, 
   Users,
   Mail,
-  Github,
-  Twitter,
   Target,
   Coins,
   Star,
   Brain
 } from 'lucide-react';
+import * as simpleIcons from 'simple-icons';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -264,7 +263,7 @@ export default function Home() {
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-black font-semibold px-8"
-                onClick={() => document.querySelector('input[type="email"]')?.focus()}
+                onClick={() => (document.querySelector('input[type="email"]') as HTMLInputElement)?.focus()}
               >
                 Get Early Access
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -289,14 +288,38 @@ export default function Home() {
             </div>
             
             <div className="flex items-center space-x-6">
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
-                <Mail className="h-5 w-5" />
+              <a href="https://discord.gg/XFVpFrx9H4" className="text-gray-400 hover:text-green-400 transition-colors" title="Discord">
+                <span
+                  className="h-5 w-5 block"
+                  dangerouslySetInnerHTML={{
+                    __html: simpleIcons.siDiscord.svg.replace(
+                      '<svg',
+                      '<svg width="100%" height="100%" fill="currentColor"'
+                    ),
+                  }}
+                />
               </a>
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
-                <Twitter className="h-5 w-5" />
+              <a href="https://x.com/forezyxyz" className="text-gray-400 hover:text-green-400 transition-colors" title="X (formerly Twitter)">
+                <span
+                  className="h-5 w-5 block"
+                  dangerouslySetInnerHTML={{
+                    __html: simpleIcons.siX.svg.replace(
+                      '<svg',
+                      '<svg width="100%" height="100%" fill="currentColor"'
+                    ),
+                  }}
+                />
               </a>
-              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
-                <Github className="h-5 w-5" />
+              <a href="https://github.com/cavos-labs/forezy-web" className="text-gray-400 hover:text-green-400 transition-colors" title="GitHub">
+                <span
+                  className="h-5 w-5 block"
+                  dangerouslySetInnerHTML={{
+                    __html: simpleIcons.siGithub.svg.replace(
+                      '<svg',
+                      '<svg width="100%" height="100%" fill="currentColor"'
+                    ),
+                  }}
+                />
               </a>
             </div>
           </div>
