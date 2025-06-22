@@ -20,20 +20,29 @@ import {
   Brain
 } from 'lucide-react';
 import * as simpleIcons from 'simple-icons';
+import { joinWaitlist } from './actions';
 
 export default function Home() {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     
     setIsLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setIsSubmitted(true);
+    setError(null);
+    
+    const result = await joinWaitlist(email);
+
+    if (result.error) {
+      setError(result.error);
+    } else {
+      setIsSubmitted(true);
+    }
+    
     setIsLoading(false);
   };
 
@@ -107,6 +116,7 @@ export default function Home() {
                       )}
                     </Button>
                   </div>
+                  {error && <p className="text-sm text-red-500 mt-2">{error}</p>}
                   <p className="text-sm text-gray-400">
                     Be the first to start forecasting and earning rewards
                   </p>
