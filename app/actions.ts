@@ -19,8 +19,6 @@ export const joinWaitlist = async (email: string) => {
       body: JSON.stringify({ email }),
     });
 
-    console.log('response', response);
-
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({ error: response.statusText }));
       console.error('Error joining waitlist:', errorData);

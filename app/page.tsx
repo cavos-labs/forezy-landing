@@ -298,7 +298,7 @@ export default function Home() {
             </div>
             
             <div className="flex items-center space-x-6">
-              <a href="https://discord.gg/XFVpFrx9H4" className="text-gray-400 hover:text-green-400 transition-colors" title="Discord">
+              <a href="https://discord.gg/XFVpFrx9H4" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-400 transition-colors" title="Discord">
                 <span
                   className="h-5 w-5 block"
                   dangerouslySetInnerHTML={{
@@ -309,7 +309,7 @@ export default function Home() {
                   }}
                 />
               </a>
-              <a href="https://x.com/forezyxyz" className="text-gray-400 hover:text-green-400 transition-colors" title="X (formerly Twitter)">
+              <a href="https://x.com/forezyxyz" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-400 transition-colors" title="X (formerly Twitter)">
                 <span
                   className="h-5 w-5 block"
                   dangerouslySetInnerHTML={{
@@ -320,7 +320,7 @@ export default function Home() {
                   }}
                 />
               </a>
-              <a href="https://github.com/cavos-labs/forezy-web" className="text-gray-400 hover:text-green-400 transition-colors" title="GitHub">
+              <a href="https://github.com/cavos-labs/forezy-web" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-400 transition-colors" title="GitHub">
                 <span
                   className="h-5 w-5 block"
                   dangerouslySetInnerHTML={{
