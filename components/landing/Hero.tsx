@@ -1,9 +1,34 @@
-// app/components/Hero.tsx
 'use client';
 
 import Image from 'next/image';
+import { useState } from 'react';
+import { joinWaitlist } from '../../app/actions';
 
 export default function Hero() {
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setIsLoading(true);
+    setError(null);
+    
+    const result = await joinWaitlist(email);
+
+    if (result.error) {
+      setError(result.error);
+    } else {
+      setIsSubmitted(true);
+    }
+    
+    setIsLoading(false);
+  };
+  
+
   return (
     <section className="w-full min-h-screen bg-black text-white px-6 md:px-12 py-12 mt-20">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
@@ -21,16 +46,36 @@ export default function Hero() {
           </p>
 
           {/* Waitlist Form */}
-          <form className="flex w-full max-w-md">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="flex-1 p-3 rounded-l-md bg-black border border-gray-600 text-white focus:outline-none"
-            />
-            <button className="px-6 py-3 rounded-md border border-green-500 text-white font-medium font-orbitron shadow-[0_0_15px_#00ff99] hover:shadow-[0_0_25px_#00ff99] transition duration-200 ml-4">
-              Join Waitlist
-            </button>
-          </form>
+          {!isSubmitted ? (
+            <form onSubmit={handleSubmit} className="flex w-full max-w-md relative">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 p-3 rounded-l-md bg-black border border-gray-600 text-white focus:outline-none"
+                required
+              />
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="px-6 py-3 rounded-r-md border border-green-500 text-white font-medium font-orbitron shadow-[0_0_15px_#00ff99] hover:shadow-[0_0_25px_#00ff99] transition duration-200 ml-4"
+              >
+                {isLoading ? (
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mx-auto" />
+                ) : (
+                  <>
+                    Join Waitlist
+                  </>
+                )}
+              </button>
+              {error && <p className="text-sm text-red-500 mt-2 absolute left-0 -bottom-6">{error}</p>}
+            </form>
+          ) : (
+            <p className="text-green-400 font-semibold mt-4">
+              ✅ You&apos;re on the waitlist! We&apos;ll notify you at <strong>{email}</strong>.
+            </p>
+          )}
         </div>
 
         {/* Right */}
