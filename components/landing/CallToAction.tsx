@@ -17,7 +17,12 @@ export default function CallToAction() {
         </p>
 
         {/* Botón */}
-        <button className="px-6 py-3 rounded-md border border-green-500 text-white font-medium font-orbitron shadow-[0_0_15px_#00ff99] hover:shadow-[0_0_25px_#00ff99] transition duration-200">
+        <button
+        onClick={() => {
+          const formSection = document.getElementById('header');
+          formSection?.scrollIntoView({ behavior: 'smooth' });
+        }} 
+        className="px-6 py-3 rounded-md border border-green-500 text-white font-medium font-orbitron shadow-[0_0_15px_#00ff99] hover:shadow-[0_0_25px_#00ff99] transition duration-200">
           Get Early Access
         </button>
       </div>

@@ -23,20 +23,48 @@ export default function Footer() {
 
             {/* Social icons */}
             <div className="flex items-center gap-6">
-            <IconWrapper>
-                <FaDiscord />
-            </IconWrapper>
-            <IconWrapper>
-                <FaXTwitter />
-            </IconWrapper>
-            <IconWrapper>
-                <FaTelegram />
-            </IconWrapper>
-            <IconWrapper>
-                <FaGithub />
-            </IconWrapper>
+              <a
+                href="https://discord.gg/XFVpFrx9H4"
+                aria-label="Join our Discord"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconWrapper>
+                  <FaDiscord />
+                </IconWrapper>
+              </a>
+              <a
+                href="https://x.com/forezyxyz"
+                aria-label="Follow us on Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconWrapper>
+                  <FaXTwitter />
+                </IconWrapper>
+              </a>
+              <a
+                href=""
+                aria-label="Join our Telegram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconWrapper>
+                  <FaTelegram />
+                </IconWrapper>
+              </a>
+              <a
+                href="https://github.com/cavos-labs/forezy-web"
+                aria-label="Visit our GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconWrapper>
+                  <FaGithub />
+                </IconWrapper>
+              </a>
             </div>
-        </div>
+          </div>
 
         {/* Línea inferior */}
         <div className="w-[90%] md:w-[75%] h-[0.71px] opacity-20 bg-green-500 opacity-30 mx-auto mb-6" />
