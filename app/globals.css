@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --forezy-green: 0, 255, 153;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,6 +15,10 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @layer base {
@@ -78,5 +83,77 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+}
+
+/* Section container */
+.section-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 3rem 0;
+  overflow: hidden;
+}
+
+/* First section (Hero) should take full height */
+.section-container:first-of-type {
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-container {
+    min-height: auto;
+    padding: 4rem 0;
+  }
+  
+  .section-container:first-of-type {
+    min-height: 100vh;
+  }
+}
+
+/* Section transitions */
+.section-transition {
+  position: relative;
+  margin-top: -5rem;
+  padding-top: 5rem;
+  z-index: 1;
+}
+
+/* Animation utility classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(var(--forezy-green), 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(var(--forezy-green), 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(var(--forezy-green), 0.5);
   }
 }
